@@ -1,16 +1,21 @@
 {
-  "name": "backend_node_workout_beginner",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-    "prettier": "^3.5.2"
-  }
+	"name": "backend_node_workout_beginner",
+	"version": "1.0.0",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"@trivago/prettier-plugin-sort-imports": "^5.2.2",
+		"colors": "^1.4.0",
+		"prettier": "^3.5.2"
+	},
+	"dependencies": {
+		"express": "^4.21.2"
+	}
 }
