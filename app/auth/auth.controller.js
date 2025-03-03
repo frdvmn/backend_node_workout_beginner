@@ -1,6 +1,9 @@
+const asyncHandler = require('express-async-handler')
+
 // @desc		Auth user
 // @route		POST /api/auth/login
 // @access	Public
-export const authUser = (req, res) => {
-	res.send(`Authenticated successfully ${req.body.username}`)
-}
+export const authUser = asyncHandler(async (req, res) => {
+	console.log(req.body.username)
+	res.send('sccess')
+})
