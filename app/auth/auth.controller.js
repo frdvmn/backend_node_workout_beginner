@@ -9,6 +9,10 @@ import { generateToken } from './generate-token.js'
 // @access	Public
 export const authUser = asyncHandler(async (req, res) => {
 	const { email, password } = req.body
+
+	if (!email || !password) {
+		throw new Error('Email and password are required')
+	}
 	const user = await prisma.user.findUnique({
 		where: {
 			email

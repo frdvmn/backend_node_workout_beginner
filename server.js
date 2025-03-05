@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import express from 'express'
 import morgan from 'morgan'
 import authRoutes from './app/auth/auth.routes.js'
+import exerciseRoutes from './app/exercise/exercise.routes.js'
 import { authProtect } from './app/middleware/auth.middleware.js'
 import { errorHandler, notFound } from './app/middleware/error.middleware.js'
 import { prisma } from './app/prisma.js'
@@ -22,6 +23,7 @@ async function main() {
 	app.use(express.json())
 	app.use('/api/auth', authRoutes)
 	app.use('/api/users', authProtect, userRoutes)
+	app.use('/api/exercises', authProtect, exerciseRoutes)
 
 	// Middleware для обработки ошибок
 	app.use(notFound)
