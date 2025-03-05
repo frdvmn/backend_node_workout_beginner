@@ -20,10 +20,14 @@ export const authUser = asyncHandler(async (req, res) => {
 	})
 	const isMatchPassword = user && (await argon2.verify(user.password, password))
 	if (!(user && isMatchPassword)) {
+		res.status(401)
 		throw new Error('Email or Password is incorrect')
 	}
 
-	return res.json({ user, token: generateToken(user) })
+	const resUser = { ...user }
+	delete resUser.password
+
+	return res.json({ user: { ...resUser }, token: generateToken(user) })
 })
 
 // @desc		Register user
