@@ -31,7 +31,7 @@ model Workout {
 
   name String
 
-  exercise WorkoutExercise[]
+  exercises Exercise[]
 }
 
 model Exercise {
@@ -43,16 +43,5 @@ model Exercise {
   times    Int
   iconPath String @map("icon_path")
 
-  workout WorkoutExercise[]
-}
-
-model WorkoutExercise {
-  workoutId  Int
-  exerciseId Int
-
-  workout  Workout  @relation(fields: [workoutId], references: [id])
-  exercise Exercise @relation(fields: [exerciseId], references: [id])
-
-  @@id([workoutId, exerciseId])
-  @@unique([workoutId, exerciseId])
+  workouts Workout[]
 }

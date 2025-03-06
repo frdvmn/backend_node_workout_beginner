@@ -9,15 +9,10 @@ import { authProtect } from './app/middleware/auth.middleware.js'
 import { errorHandler, notFound } from './app/middleware/error.middleware.js'
 import { prisma } from './app/prisma.js'
 import userRoutes from './app/user/user.routes.js'
+import workoutsRoutes from './app/workout/workout.routes.js'
+
 dotenv.config()
 const app = express()
-
-/*
-TODO: 
-ASYNC ERROR HANDLING METHOD ASYNCHANDLER EXPRESS FOR CONTROLLER
-
-JSON WEBTOCKEN
-*/
 
 async function main() {
 	process.env.NODE_ENV === 'development' && app.use(morgan('dev'))
@@ -29,8 +24,8 @@ async function main() {
 	app.use('/api/auth', authRoutes)
 	app.use('/api/users', authProtect, userRoutes)
 	app.use('/api/exercises', authProtect, exerciseRoutes)
+	app.use('/api/workouts', authProtect, workoutsRoutes)
 
-	// Middleware для обработки ошибок
 	app.use(notFound)
 	app.use(errorHandler)
 
