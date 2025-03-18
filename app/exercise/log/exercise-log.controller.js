@@ -14,8 +14,6 @@ export const createNewExerciseLog = asyncHandler(async (req, res) => {
 			}
 		})
 
-		console.log(exercise)
-
 		if (!exercise) {
 			res.status(404)
 			throw new Error('Exercise not found')
